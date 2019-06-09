@@ -9,7 +9,7 @@ function renderButtons() {
 
   // Looping through the array of movies
   for (var i = 0; i < animals.length; i++) {
-
+    
     // Then dynamicaly generating buttons for each movie in the array.
     // This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
     var a = $("<button>");
@@ -19,8 +19,10 @@ function renderButtons() {
     a.attr("data-name", animals[i]);
     // Providing the button's text with a value of the movie at index i
     a.text(animals[i]);
+    
     // Adding the button to the HTML
     $("#buttons-view").append(a);
+    
   }
 }
 
@@ -31,10 +33,10 @@ $("#add-animal").on("click", function(event) {
   event.preventDefault();
 
   // This line will grab the text from the input box
-  var animal = $("#animal-input").val().trim();
+  var input = $("#animal-input").val().trim();
   // The movie from the textbox is then added to our array
-  animals.push(animal);
-  
+  animals.push(input);
+  console.log(input)
 
   // calling renderButtons which handles the processing of our movie array
   renderButtons();
@@ -42,7 +44,8 @@ $("#add-animal").on("click", function(event) {
 
 // Calling the renderButtons function at least once to display the initial list of movies
 renderButtons();
-$("button").on("click", function() {
+$(".animal").on("click", function() {
+  console.log(this)
   // Grabbing and storing the data-animal property value from the button
   var animal = $(this).attr("data-name");
   console.log(animal)
@@ -76,7 +79,10 @@ $("button").on("click", function() {
         var animalImage = $("<img>");
         // Setting the src attribute of the image to a property pulled off the result item
         animalImage.attr("src", results[i].images.fixed_height.url);
-
+        animalImage.addClass("gif")
+        animalImage.attr("data-animate", results[i].images.fixed_height.url )
+        animalImage.attr("data-still", results[i].images.fixed_height_still.url )
+        animalImage.attr("data-state", "animate" )
         // Appending the paragraph and image tag to the animalDiv
         animalDiv.append(p);
         animalDiv.append(animalImage);
@@ -85,4 +91,19 @@ $("button").on("click", function() {
         $("#gifs-appear-here").prepend(animalDiv);
       }
     });
+});
+$(".gif").on("click", function() {
+  console.log(this)
+  // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+  var state = $(this).attr("data-state");
+  // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+  // Then, set the image's data-state to animate
+  // Else set src to the data-still value
+  if (state === "still") {
+    $(this).attr("src", $(this).attr("data-animate"));
+    $(this).attr("data-state", "animate");
+  } else {
+    $(this).attr("src", $(this).attr("data-still"));
+    $(this).attr("data-state", "still");
+  }
 });

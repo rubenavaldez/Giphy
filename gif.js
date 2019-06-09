@@ -1,4 +1,4 @@
-var animals = ["dog", "fish", "bear", "lion", "turtle", "moose"]
+var animals = ["dog", "fish", "bear", "lion", "turtle", "moose", "hedgehog", "mouse", "penguin", "hippo", "elephant", "chipmunk", "piglet", "kitten", "tiger"]
 
 
 function renderButtons(){
@@ -8,6 +8,8 @@ function renderButtons(){
         var button = $("<button>")
 
         button.addClass("animal-button")
+        button.addClass("btn")
+        button.addClass("btn-success")
         button.attr("gif-value", animals[i])
         button.text(animals[i])
 

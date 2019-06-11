@@ -2,6 +2,7 @@ var animals = ["dog", "fish", "bear", "lion", "turtle", "moose", "hedgehog", "mo
 
 
 function renderButtons(){
+    
     $("#display-buttons").empty()
 
     for (i = 0; i < animals.length; i++){
@@ -20,6 +21,8 @@ function renderButtons(){
 
 renderButtons()
 
+// animals.push("bat")
+
 $("#add-animal").on("click", function (){
     event.preventDefault();
 
@@ -29,10 +32,11 @@ $("#add-animal").on("click", function (){
     console.log(animals)
 
     renderButtons();
+    $("#form-input").val("")
 
 })
 
-$(".animal-button").on("click", function(){
+$("body").on("click",".animal-button", function(){
        
     var getAnimal = $(this).attr("gif-value")
 
@@ -95,6 +99,8 @@ $(document).on('click','img',function(){
 
     });
 
+    
 
+    
 
 

@@ -6,8 +6,9 @@ button,
     }
 
 img, p {
-    float: left
+    float: left;
 }
+
 btn {
     padding-left: 5px;
     padding-right: 5px;

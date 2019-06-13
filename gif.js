@@ -64,7 +64,7 @@ $("body").on("click",".animal-button", function(){
                 var animalImage = $("<img>")
 
                 animalImage.addClass("gif")
-                animalImage.attr("src", results[i].images.fixed_height.url)
+                animalImage.attr("src", results[i].results[i].images.fixed_height_still.url)
                 animalImage.attr("data-animate", results[i].images.fixed_height.url )
                 animalImage.attr("data-still", results[i].images.fixed_height_still.url  )
                 animalImage.attr("state", "animated")

@@ -21,7 +21,7 @@ function renderButtons(){
 
 renderButtons()
 
-// animals.push("bat")
+
 
 $("#add-animal").on("click", function (){
     event.preventDefault();
@@ -39,11 +39,11 @@ $("#add-animal").on("click", function (){
 $("body").on("click",".animal-button", function(){
        
     var getAnimal = $(this).attr("gif-value")
-// fish
+
     console.log(getAnimal)
     var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=5YZ894rMrCbWmgCjCwfzFzLcae8nlSyO&q=" +
     getAnimal + "&limit=10&offset=0&rating=G&lang=en";
-//5YZ894rMrCbWmgCjCwfzFzLcae8nlSyO
+
     $.ajax({
         url: queryURL,
         method: "GET"

@@ -39,11 +39,11 @@ $("#add-animal").on("click", function (){
 $("body").on("click",".animal-button", function(){
        
     var getAnimal = $(this).attr("gif-value")
-
+// fish
     console.log(getAnimal)
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-    getAnimal + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
-
+    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=5YZ894rMrCbWmgCjCwfzFzLcae8nlSyO&q=" +
+    getAnimal + "&limit=10&offset=0&rating=G&lang=en";
+//5YZ894rMrCbWmgCjCwfzFzLcae8nlSyO
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -64,7 +64,7 @@ $("body").on("click",".animal-button", function(){
                 var animalImage = $("<img>")
 
                 animalImage.addClass("gif")
-                animalImage.attr("src", results[i].results[i].images.fixed_height_still.url)
+                animalImage.attr("src", results[i].images.fixed_height_still.url)
                 animalImage.attr("data-animate", results[i].images.fixed_height.url )
                 animalImage.attr("data-still", results[i].images.fixed_height_still.url  )
                 animalImage.attr("state", "animated")

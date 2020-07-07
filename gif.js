@@ -74,7 +74,7 @@ $("body").on("click",".animal-button", function(){
                 animalImage.attr("src", gif.still)
                 animalImage.attr("data-animate", gif.animated )
                 animalImage.attr("data-still", gif.still  )
-                animalImage.attr("state", "animated")
+                animalImage.attr("state", "still")
 
                 gifDiv.append(p);
                 gifDiv.append(animalImage)

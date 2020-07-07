@@ -1,4 +1,4 @@
-# Giphy
+# Giphy https://rubenavaldez.github.io/Giphy/
 
 Giphy is a dynamically generated web application utilizing the giphy API. 
 Use the provided buttons to generate gifs of the provided animals

@@ -15,7 +15,7 @@ function renderButtons(){
         button.text(animal)
 
         $("#display-buttons").append(button)
-        // console.log(button.attr("gif-value"))
+        console.log(button.attr("gif-value"))
     })
 }
 

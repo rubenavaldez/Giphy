@@ -5,18 +5,18 @@ function renderButtons(){
     
     $("#display-buttons").empty()
 
-    for (i = 0; i < animals.length; i++){
+    animals.forEach(function(animal){
         var button = $("<button>")
 
         button.addClass("animal-button")
         button.addClass("btn")
         button.addClass("btn-success")
-        button.attr("gif-value", animals[i])
-        button.text(animals[i])
+        button.attr("gif-value", animal)
+        button.text(animal)
 
         $("#display-buttons").append(button)
         console.log(button.attr("gif-value"))
-}
+    })
 }
 
 renderButtons()
@@ -53,20 +53,27 @@ $("body").on("click",".animal-button", function(){
 
         console.log(response)
 
-        var results = response.data;
+        var results = response.data.map(function(gif){
+            let obj = {
+                rating: gif.rating,
+                still : gif.images.fixed_height_still.url,
+                animated: gif.images.fixed_height.url
+            }  
+            return obj;          
+        });
 
-            console.log(response.data)
+            console.log(results)
             
-            for ( i = 0; i < results.length; i++) {
+            results.forEach(function(gif) {
                 var gifDiv = $("<div>");
-                var p = $("<p>").text("rating: " + results[i].rating)
+                var p = $("<p>").text("rating: " + gif.rating)
 
                 var animalImage = $("<img>")
 
                 animalImage.addClass("gif")
-                animalImage.attr("src", results[i].images.fixed_height_still.url)
-                animalImage.attr("data-animate", results[i].images.fixed_height.url )
-                animalImage.attr("data-still", results[i].images.fixed_height_still.url  )
+                animalImage.attr("src", gif.still)
+                animalImage.attr("data-animate", gif.animated )
+                animalImage.attr("data-still", gif.still  )
                 animalImage.attr("state", "animated")
 
                 gifDiv.append(p);
@@ -74,7 +81,7 @@ $("body").on("click",".animal-button", function(){
 
                 $("#gifs-appear-here").prepend(gifDiv)
 
-            }
+            })
 
       })
 
